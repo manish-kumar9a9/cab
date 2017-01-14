@@ -1,0 +1,57 @@
+{
+  "status": true,
+  "totalPageCount": 0,
+  "pageId": 0,
+  "itemPerPage": 0,
+  "offset": 0,
+  "message": "sucessfully done!!!",
+  "labels": [
+    {
+      "email": "email",
+      "first name": "first name",
+      "last name": "last name",
+      "username": "username",
+      "birthday": "birthday",
+      "thumbnail": "thumbnail",
+      "gender": "gender"
+    }
+  ],
+  "users": [
+    {
+      "username": "test1",
+      "first name": "Test1 name",
+      "last name": "Test1 last",
+      "email": "test1@socialapi.com",
+      "gender": "male",
+      "thumbnail": "http://socialapione.ipragmatech.com/application/modules/User/externals/images/nophoto_user_thumb_profile.png",
+      "birthday": "2000-11-09"
+    },
+    {
+      "username": "test2",
+      "first name": "Test2 name",
+      "last name": "Test2 last",
+      "email": "test2@socialapi.com",
+      "gender": "male",
+      "thumbnail": "http://socialapione.ipragmatech.com/application/modules/User/externals/images/nophoto_user_thumb_profile.png",
+      "birthday": "2000-11-09"
+    },
+    {
+      "username": "test3",
+      "first name": "Test3 name",
+      "last name": "Test3 last",
+      "email": "test3@socialapi.com",
+      "gender": "male",
+      "thumbnail": "http://socialapione.ipragmatech.com/application/modules/User/externals/images/nophoto_user_thumb_profile.png",
+      "birthday": "2000-11-09"
+    },
+    {
+      "username": "Anthony  jenj I ns",
+      "first name": "Anthony",
+      "last name": "jenj",
+      "email": "anthonyjenj@socialapi.com",
+      "gender": "male",
+      "thumbnail": "http://socialapione.ipragmatech.com/application/modules/User/externals/images/nophoto_user_thumb_profile.png",
+      "birthday": "1990-11-09"
+    }
+  ]
+}

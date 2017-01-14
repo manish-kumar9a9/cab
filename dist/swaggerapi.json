@@ -1,0 +1,571 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "CabDriver API Documentation",
+    "description": " REST API for CabDriver.",
+    "version": "1.0.0"
+  },
+  "host": "cabdriver.com",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/rest/default/V1/integration/customer/token": {
+      "post": {
+        "summary": "Get customer token",
+        "description": "Get customer token. Please register if not before generating token or use <b>roni_cost@example.com</b> as username and password.",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "query",
+            "description": "User email",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "password",
+            "in": "query",
+            "description": "Password",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "tags": [
+          "Customer"
+        ],
+        "responses": {
+          "200": {
+            "description": "Get all products",
+            "schema": {
+              "$ref": "#/definitions/token"
+            }
+          },
+          "400": {
+            "description": "Invalid authentication supplied"
+          },
+          "401": {
+            "description": "Unauthorized request"
+          },
+          "405": {
+            "description": "Method not supported"
+          },
+          "500": {
+            "description": "Server error"
+          },
+          "default": {
+            "description": "Get customer token",
+            "schema": {
+              "$ref": "#/definitions/token"
+            }
+          }
+        }
+      }
+    },
+    "/rest/V1/ipproducts/products": {
+      "get": {
+        "summary": "Retrieve products acording to the specified parameter",
+        "description": "Retrieve products acording to the specified parameter.",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "searchCriteria[pageSize]",
+            "in": "query",
+            "description": "No of items per page",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "searchCriteria[currentPage]",
+            "in": "query",
+            "description": "Current page no",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "searchCriteria[filterGroups][0][filters][0][field]",
+            "in": "query",
+            "description": "attribute name",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "searchCriteria[filterGroups][0][filters][0][value]",
+            "in": "query",
+            "description": "value",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "searchCriteria[filterGroups][0][filters][0][conditionType]",
+            "in": "query",
+            "description": "value like eq, in, gt etc",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Products"
+        ],
+        "responses": {
+          "200": {
+            "description": "Get all products",
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          },
+          "400": {
+            "description": "Invalid authentication supplied"
+          },
+          "401": {
+            "description": "Unauthorized request"
+          },
+          "405": {
+            "description": "Method not supported"
+          },
+          "500": {
+            "description": "Server error"
+          },
+          "default": {
+            "description": "Get all products",
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          }
+        }
+      }
+    },
+    "/rest/V1/categories": {
+      "get": {
+        "summary": "Retrieve all categories of the Store.",
+        "description": "Retrieve all categories of the Store.",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Products"
+        ],
+        "responses": {
+          "200": {
+            "description": "Get all products",
+            "schema": {
+              "$ref": "#/definitions/categories"
+            }
+          },
+          "400": {
+            "description": "Invalid authentication supplied"
+          },
+          "401": {
+            "description": "Unauthorized request"
+          },
+          "405": {
+            "description": "Method not supported"
+          },
+          "500": {
+            "description": "Server error"
+          },
+          "default": {
+            "description": "Get all  categories of the Store.",
+            "schema": {
+              "$ref": "#/definitions/childcategory"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "categories": {
+      "type": "object",
+      "required": [
+        "id",
+        "parent_id",
+        "name",
+        "position",
+        "level",
+        "product_count",
+        "children_data"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "parent_id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "position": {
+          "type": "integer"
+        },
+        "level": {
+          "type": "integer"
+        },
+        "product_count": {
+          "type": "integer"
+        },
+        "added_at": {
+          "type": "string"
+        },
+        "children_data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/childcategory"
+          }
+        }
+      }
+    },
+    "token": {
+      "required": [
+        "username",
+        "password"
+      ],
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "registryres": {
+      "required": [
+        "registry_id"
+      ],
+      "properties": {
+        "registry_id": {
+          "type": "integer"
+        }
+      }
+    },
+    "registryitems": {
+      "required": [
+        "registry_id",
+        "registry_items"
+      ],
+      "properties": {
+        "registry_id": {
+          "type": "integer"
+        },
+        "registry_items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Product"
+          }
+        }
+      }
+    },
+    "storelist": {
+      "required": [
+        "store_id",
+        "store_name",
+        "store_phone",
+        "store_address"
+      ],
+      "properties": {
+        "store_id": {
+          "type": "integer"
+        },
+        "store_name": {
+          "type": "string"
+        },
+        "store_phone": {
+          "type": "integer"
+        },
+        "store_address": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/storeaddress"
+          }
+        }
+      }
+    },
+    "Product": {
+      "required": [
+        "entity_id",
+        "attribute_set_id",
+        "type_id",
+        "sku",
+        "has_options",
+        "required_options",
+        "created_at",
+        "updated_at",
+        "price",
+        "tax_class_id",
+        "final_price",
+        "minimal_price",
+        "min_price",
+        "max_price",
+        "tier_price",
+        "name",
+        "small_image",
+        "thumbnail",
+        "visibility",
+        "request_path"
+      ],
+      "properties": {
+        "entity_id": {
+          "type": "integer"
+        },
+        "attribute_set_id": {
+          "type": "integer"
+        },
+        "type_id": {
+          "type": "integer"
+        },
+        "sku": {
+          "type": "string"
+        },
+        "has_options": {
+          "type": "integer"
+        },
+        "required_options": {
+          "type": "integer"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        },
+        "price": {
+          "type": "string"
+        },
+        "tax_class_id": {
+          "type": "integer"
+        },
+        "final_price": {
+          "type": "string"
+        },
+        "minimal_price": {
+          "type": "number",
+          "format": "double"
+        },
+        "min_price": {
+          "type": "string"
+        },
+        "max_price": {
+          "type": "string"
+        },
+        "tier_price": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "small_image": {
+          "type": "integer"
+        },
+        "thumbnail": {
+          "type": "integer"
+        },
+        "visibility": {
+          "type": "integer"
+        },
+        "request_path": {
+          "type": "string"
+        }
+      }
+    },
+    "editregistry": {
+      "required": [
+        "status"
+      ],
+      "properties": {
+        "status": {
+          "type": "boolean"
+        }
+      }
+    },
+    "childcategory": {
+      "type": "object",
+      "required": [
+        "id",
+        "parent_id",
+        "name",
+        "position",
+        "level",
+        "product_count",
+        "children_data"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "parent_id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "position": {
+          "type": "integer"
+        },
+        "level": {
+          "type": "integer"
+        },
+        "product_count": {
+          "type": "integer"
+        },
+        "added_at": {
+          "type": "string"
+        },
+        "children_data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/child"
+          }
+        }
+      }
+    },
+    "child": {
+      "type": "object",
+      "required": [
+        "id",
+        "parent_id",
+        "name",
+        "position",
+        "level",
+        "product_count"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "parent_id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "position": {
+          "type": "integer"
+        },
+        "level": {
+          "type": "integer"
+        },
+        "product_count": {
+          "type": "integer"
+        },
+        "added_at": {
+          "type": "string"
+        }
+      }
+    },
+    "storeaddress": {
+      "type": "object",
+      "required": [
+        "street",
+        "city",
+        "postal_code"
+      ],
+      "properties": {
+        "street": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "postal_code": {
+          "type": "integer"
+        }
+      }
+    },
+    "provincelist": {
+      "type": "object",
+      "required": [
+        "id",
+        "name"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "createregistry": {
+      "type": "object",
+      "required": [
+        "name",
+        "province",
+        "store",
+        "event_date",
+        "co_registant",
+        "event_location",
+        "guest_message"
+      ],
+      "properties": {
+        "name": {
+          "type": "integer"
+        },
+        "province": {
+          "type": "string"
+        },
+        "store": {
+          "type": "string"
+        },
+        "event_date": {
+          "type": "string"
+        },
+        "co_registant": {
+          "type": "string"
+        },
+        "event_location": {
+          "type": "string"
+        },
+        "guest_message": {
+          "type": "string"
+        }
+      }
+    },
+    "sociallogindata": {
+      "type": "object",
+      "required": [
+        "uid",
+        "firstname",
+        "lastname",
+        "email",
+        "password",
+        "type"
+      ],
+      "properties": {
+        "uid": {
+          "type": "string"
+        },
+        "firstname": {
+          "type": "string"
+        },
+        "lastname": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

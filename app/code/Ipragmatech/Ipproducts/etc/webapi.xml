@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!-- /** * Copyright © 2016 Ipragmatech . All rights reserved. */ -->
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+	<!-- Routing define -->
+	<route url="/V1/ipproducts/products" method="GET">
+		<service class="Ipragmatech\Ipproducts\Api\ProductsInterface"
+			method="getProducts" />
+		<resources>
+			<resource ref="anonymous" />
+		</resources>
+		<data>
+			<parameter name="customerId" force="true">%customer_id%</parameter>
+		</data>
+	</route>
+</routes>

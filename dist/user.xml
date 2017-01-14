@@ -1,0 +1,18 @@
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <user>
+        <username>xml_first</username>
+        <first_name>Xml 1</first_name>
+        <last_name>la</last_name>
+        <email>1xmlfirst@gmail.com</email>
+        <gender>Male</gender>
+        <birthday>1989-08-09</birthday>
+    </user>
+    <user>
+        <username>xml_second</username>
+        <first_name>Xml 2</first_name>
+        <last_name>se</last_name>
+        <email>xmlsecond@gmail.com</email>
+        <gender>Male</gender>
+        <birthday>1994-07-09</birthday>
+    </user>
+</urlset>
